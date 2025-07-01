@@ -1,9 +1,9 @@
-import { useProdutos } from "../context/useContext";
+
 import Cart from "./Cart";
 
 
 export default function Header() {
-  const {count} = useProdutos()
+  
   return (
     <header className="bg-gray-900 text-white px-6 py-4 shadow-md w-full">
       <div className="container mx-auto flex justify-between items-center">
@@ -13,7 +13,7 @@ export default function Header() {
           <a href="#" className="hover:text-gray-300">Produtos</a>
           <a href="#" className="hover:text-gray-300">Contato</a>
         </nav>
-        <Cart count={count}/>
+        <Cart/>
       </div>
     </header>
   );

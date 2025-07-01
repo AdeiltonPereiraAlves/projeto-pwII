@@ -1,4 +1,6 @@
-import { useProdutos } from "../context/useContext";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCarrinho } from "../context/CarrinhoContext";
+
 import { Produto } from "../db/produtos";
 import Botao from "./Botao";
 
@@ -7,10 +9,13 @@ interface CardProps {
 }
 
 export default function Card({ produto }: CardProps) {
-    const { setCount} = useProdutos()
+   
+    const { adicionarProduto } = useCarrinho();
 
-    function addCart(){
-        setCount((prev: number) => prev+1)
+    function addCart(produto:any){
+       
+       
+       adicionarProduto(produto)
     }
   return (
     <div
@@ -29,7 +34,7 @@ export default function Card({ produto }: CardProps) {
           R$ {produto.preco.toFixed(2)}
         </p>
         
-          <button className="flex w-full justify-center items-center" onClick={addCart}>
+          <button className="flex w-full justify-center items-center" onClick={()=> addCart(produto)}>
             <Botao texto="Comprar" />
           </button>
       

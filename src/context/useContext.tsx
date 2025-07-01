@@ -11,6 +11,7 @@ interface ProdutoContextType {
   cart:Produto[];
   count: any
   setCount: any
+  setCart:any
 }
 
 const ProdutoContext = createContext<ProdutoContextType | undefined>(undefined);
@@ -20,7 +21,7 @@ export const ProdutoProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState([])
   const [count, setCount] = useState(0)
   return (
-    <ProdutoContext.Provider value={{ listaProdutos, cart, count, setCount}}>
+    <ProdutoContext.Provider value={{ listaProdutos, cart, count, setCount, setCart}}>
       {children}
     </ProdutoContext.Provider>
   );
