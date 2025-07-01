@@ -7,7 +7,7 @@ export  interface PaginaProps{
 
 export default function Pagina(props: PaginaProps){
     return(
-        <div>
+        <div className="m-auto flex justify-center items-center mt-10">
             {props.children}
         </div>
     )

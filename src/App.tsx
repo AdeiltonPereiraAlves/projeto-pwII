@@ -10,9 +10,9 @@ function App() {
   
   return (
     <>
-      <div className='bg-gray-600' >
+      <div className='bg-gray-100' >
+        <Header/>
         <Pagina>
-          <Header/>
           <ListaProdutos/>
         </Pagina>
         <Footer/>

@@ -1,10 +1,17 @@
+import { useProdutos } from "../context/useContext";
 import { Produto } from "../db/produtos";
+import Botao from "./Botao";
 
 interface CardProps {
   produto: Produto;
 }
 
 export default function Card({ produto }: CardProps) {
+    const { setCount} = useProdutos()
+
+    function addCart(){
+        setCount((prev: number) => prev+1)
+    }
   return (
     <div
       key={produto.id}
@@ -21,6 +28,11 @@ export default function Card({ produto }: CardProps) {
         <p className="mt-2 text-blue-600 font-bold">
           R$ {produto.preco.toFixed(2)}
         </p>
+        
+          <button className="flex w-full justify-center items-center" onClick={addCart}>
+            <Botao texto="Comprar" />
+          </button>
+      
       </div>
     </div>
   );
