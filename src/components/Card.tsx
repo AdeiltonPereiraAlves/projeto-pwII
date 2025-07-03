@@ -1,10 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {useLogicaCarrinho} from"../hooks/useCarrinho"
 import { Produto } from "../db/produtos";
+import Botao from "./Botao";
 
 interface CardProps {
   produto: Produto;
 }
 
 export default function Card({ produto }: CardProps) {
+   
+    const { adicionarProduto } = useLogicaCarrinho();
+
+    function addCart(produto:any){
+       
+       
+       adicionarProduto(produto)
+    }
   return (
     <div
       key={produto.id}
@@ -21,6 +32,11 @@ export default function Card({ produto }: CardProps) {
         <p className="mt-2 text-blue-600 font-bold">
           R$ {produto.preco.toFixed(2)}
         </p>
+        
+          <button className="flex w-full justify-center items-center" onClick={()=> addCart(produto)}>
+            <Botao texto="Comprar" />
+          </button>
+      
       </div>
     </div>
   );

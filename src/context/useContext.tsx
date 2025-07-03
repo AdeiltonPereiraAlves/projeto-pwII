@@ -1,90 +1,37 @@
-/* eslint-disable react-refresh/only-export-components */
-// /* eslint-disable @typescript-eslint/no-unused-vars */
 // /* eslint-disable @typescript-eslint/no-explicit-any */
+// /* eslint-disable @typescript-eslint/no-unused-vars */
+// /* eslint-disable react-refresh/only-export-components */
 
 
-// import  { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-// import { Produto, produtos } from '../db/produtos';
-// // 1.1 Tipo do usuário
-// // type Produto = {
-// //   id: number;
-// //   nome: string;
-// //   descricao: string;
-// //   preco: number;
-// //   quantidade: number
-// // };
+// import { createContext, useContext, ReactNode, useState } from "react";
+// import { produtos, Produto } from "../db/produtos";
 
-// // 1.2 Tipo do contexto
-// type ProdutoContextType = {
+// interface ProdutoContextType {
+//   listaProdutos: Produto[];
+//   cart:Produto[];
+//   count: any
+//   setCount: any
+//   setCart:any
+// }
 
-//   dados: any
-//   getDados: ( ) => any;
-//   setDados: any
- 
-// };
+// const ProdutoContext = createContext<ProdutoContextType | undefined>(undefined);
 
-// // 1.3 Valor padrão do contexto
-// const AuthContext = createContext<ProdutoContextType | undefined>(undefined);
-// // 1.4 Provider
 // export const ProdutoProvider = ({ children }: { children: ReactNode }) => {
-//     const [dados, setDados] = useState<Produto[]>([]);
-    
-//     async function getDados() {
-        
-
-//         setDados(produtos)
-//     }
-//     useEffect(() => {
-//          try {
-//                getDados()
-//          } catch (error:any) {
-//              throw new Error("erro ao buscar dados")
-//          }
-//      },[])
-
-
-  
-
+//   const listaProdutos = produtos; // dados mockados
+//   const [cart, setCart] = useState([])
+//   const [count, setCount] = useState(0)
 //   return (
-//     <AuthContext.Provider value={{getDados, dados, setDados  }}>
+//     <ProdutoContext.Provider value={{ listaProdutos, cart, count, setCount, setCart}}>
 //       {children}
-//     </AuthContext.Provider>
+//     </ProdutoContext.Provider>
 //   );
 // };
 
-// // 1.5 Hook para usar o contexto
-// export const useProdutos = () => {
-//   const context = useContext(AuthContext);
+// // Hook customizado para usar o contexto
+// export const useProdutos = (): ProdutoContextType => {
+//   const context = useContext(ProdutoContext);
 //   if (!context) {
-//     throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+//     throw new Error("useProdutos deve ser usado dentro de ProdutoProvider");
 //   }
 //   return context;
 // };
-
-import { createContext, useContext, ReactNode } from "react";
-import { produtos, Produto } from "../db/produtos";
-
-interface ProdutoContextType {
-  listaProdutos: Produto[];
-}
-
-const ProdutoContext = createContext<ProdutoContextType | undefined>(undefined);
-
-export const ProdutoProvider = ({ children }: { children: ReactNode }) => {
-  const listaProdutos = produtos; // dados mockados
-
-  return (
-    <ProdutoContext.Provider value={{ listaProdutos }}>
-      {children}
-    </ProdutoContext.Provider>
-  );
-};
-
-// Hook customizado para usar o contexto
-export const useProdutos = (): ProdutoContextType => {
-  const context = useContext(ProdutoContext);
-  if (!context) {
-    throw new Error("useProdutos deve ser usado dentro de ProdutoProvider");
-  }
-  return context;
-};
