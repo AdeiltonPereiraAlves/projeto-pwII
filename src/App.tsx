@@ -1,10 +1,12 @@
 
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import CarrinhoLateral from './components/CartLateral'
+
 import Footer from './components/Footer'
 import Header from './components/Header'
-import ListaProdutos from './components/ListaProdutos'
-import Pagina from './components/Pagina'
+
+import DashboardProdutos from './components/Dashboard'
+import Home from './components/Home'
 
 
 function App() {
@@ -13,12 +15,12 @@ function App() {
     <>
       <div className='bg-gray-100' >
         <Header/>
-        <Pagina>
-          <ListaProdutos/>
-          <div>
-            <CarrinhoLateral/>
-          </div>
-        </Pagina>
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<DashboardProdutos />} />
+        {/* outras rotas */}
+      </Routes>
+       
         <Footer/>
       </div>
        
