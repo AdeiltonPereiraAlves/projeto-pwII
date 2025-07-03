@@ -1,37 +1,37 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Produto } from "../db/produtos";
+import { Produto, produtos } from "../db/produtos";
+
+export interface ItemCarrinho {
+  produto: Produto;
+  quantidade: number;
+}
 
 interface CarrinhoContextType {
   aberto: boolean;
-  count: number
   abrirCarrinho: () => void;
   fecharCarrinho: () => void;
-  items: Produto[];
-  adicionarProduto: (produto: Produto) => void;
-  removerProduto: (id: number) => void;
+  items: ItemCarrinho[];
+  produtos: Produto[];
+  setItems: React.Dispatch<React.SetStateAction<ItemCarrinho[]>>;
 }
-const CarrinhoContext = createContext<CarrinhoContextType | undefined>(
-  undefined
-);
+
+const CarrinhoContext = createContext<CarrinhoContextType | undefined>(undefined);
 
 export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
   const [aberto, setAberto] = useState(false);
-   const [items, setItems] = useState<Produto[]>([]);
-   const [count, setCount] = useState(0);
-  const abrirCarrinho = () => setAberto(true);
-  const fecharCarrinho = () => setAberto(false);
-  const adicionarProduto = (produto: Produto) => {
-    setCount((prev) => prev+ 1)
-    setItems((prev) => [...prev, produto]);
-  };
-
-  const removerProduto = (id: number) => {
-    setCount((prev) => prev- 1)
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  const [items, setItems] = useState<ItemCarrinho[]>([]);
 
   return (
-    <CarrinhoContext.Provider value={{ aberto, abrirCarrinho, fecharCarrinho, items, adicionarProduto, removerProduto,count}}>
+    <CarrinhoContext.Provider
+      value={{
+        aberto,
+        abrirCarrinho: () => setAberto(true),
+        fecharCarrinho: () => setAberto(false),
+        items,
+        setItems,
+        produtos
+      }}
+    >
       {children}
     </CarrinhoContext.Provider>
   );
@@ -39,8 +39,6 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
 
 export const useCarrinho = () => {
   const context = useContext(CarrinhoContext);
-  if (!context) {
-    throw new Error("useCarrinho deve ser usado dentro de CarrinhoProvider");
-  }
+  if (!context) throw new Error("useCarrinho deve ser usado dentro de CarrinhoProvider");
   return context;
 };

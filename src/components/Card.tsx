@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCarrinho } from "../context/CarrinhoContext";
-
+import {useLogicaCarrinho} from"../hooks/useCarrinho"
 import { Produto } from "../db/produtos";
 import Botao from "./Botao";
 
@@ -10,7 +9,7 @@ interface CardProps {
 
 export default function Card({ produto }: CardProps) {
    
-    const { adicionarProduto } = useCarrinho();
+    const { adicionarProduto } = useLogicaCarrinho();
 
     function addCart(produto:any){
        
