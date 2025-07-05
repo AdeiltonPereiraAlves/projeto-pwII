@@ -7,6 +7,7 @@ import Header from './components/Header'
 
 import DashboardProdutos from './components/Dashboard'
 import Home from './components/Home'
+import Contato from './components/Contato';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<DashboardProdutos />} />
+          <Route path="/contato" element={<Contato />} />
         </Routes>
       </main>
       <Footer />
