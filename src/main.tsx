@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { CarrinhoProvider } from "./context/CarrinhoContext.tsx";
 import { ProdutoProvider } from "./context/ProdutoContext.tsx";
+import { BuscaProvider } from "./context/BuscaContext.tsx";
 import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
@@ -11,7 +12,9 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <ProdutoProvider>
         <CarrinhoProvider>
-          <App />
+          <BuscaProvider>
+            <App />
+          </BuscaProvider>
         </CarrinhoProvider>
       </ProdutoProvider>
     </BrowserRouter>

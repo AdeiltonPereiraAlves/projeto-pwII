@@ -7,25 +7,24 @@ import Header from './components/Header'
 
 import DashboardProdutos from './components/Dashboard'
 import Home from './components/Home'
+import Contato from './components/Contato';
 
 
 function App() {
-  
   return (
-    <>
-      <div className='bg-gray-100' >
-        <Header/>
+    <div className="bg-gray-100 min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
         <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<DashboardProdutos />} />
-        {/* outras rotas */}
-      </Routes>
-       
-        <Footer/>
-      </div>
-       
-    </>
-  )
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<DashboardProdutos />} />
+          <Route path="/contato" element={<Contato />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
 }
+
 
 export default App
