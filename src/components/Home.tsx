@@ -9,6 +9,7 @@ export default function Home() {
       <div>
         <CarrinhoLateral />
       </div>
+      
     </Pagina>
   );
 }
