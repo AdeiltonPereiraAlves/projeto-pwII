@@ -11,8 +11,8 @@ Este projeto é desenvolvido com Vite, React, TypeScript, TailwindCSS e usa Vite
 
 1. Clone o repositório:
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/AdeiltonPereiraAlves/projeto-pwII
+cd projeto-pwII
 Instale as dependências:
 
 
