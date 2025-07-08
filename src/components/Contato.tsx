@@ -31,8 +31,9 @@ export default function Contato() {
       )}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium">Nome</label>
+          <label htmlFor="nome" className="block text-sm font-medium">Nome</label>
           <input
+            id="nome"
             type="text"
             name="nome"
             value={form.nome}
@@ -42,8 +43,9 @@ export default function Contato() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
             value={form.email}
@@ -53,8 +55,9 @@ export default function Contato() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Mensagem</label>
+          <label htmlFor="mensagem" className="block text-sm font-medium">Mensagem</label>
           <textarea
+            id="mensagem"
             name="mensagem"
             value={form.mensagem}
             onChange={handleChange}
